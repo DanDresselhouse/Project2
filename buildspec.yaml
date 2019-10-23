@@ -12,4 +12,4 @@ phases:
         - ng build
     post_build:
       commands:
-        - aws s3 cp dist/RPAS s3://project2.com --recursive
+        - aws s3 cp dist/Project2 s3://project2.com --recursive
