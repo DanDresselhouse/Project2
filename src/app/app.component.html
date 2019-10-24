@@ -541,4 +541,13 @@
 <h1>Testing the CodeBuild (Dan)</h1>
 <h1>Testing CodeBuild trigger (Dan)</h1>
 
+
+<!-- TESTING THE S3 BUCKET CONNECTION -->
+<div>
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+</div>
+
 <router-outlet></router-outlet>
