@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Artist } from 'src/app/Models/artist';
 import { PostrequestService } from 'src/services/postrequest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createaccountpage',
@@ -9,7 +10,7 @@ import { PostrequestService } from 'src/services/postrequest.service';
 })
 export class CreateaccountpageComponent implements OnInit {
 
-  constructor(private postrequest: PostrequestService) { }
+  constructor(private postrequest: PostrequestService, private router:Router) { }
 
   name: string = "";
   username: string = "";
@@ -42,7 +43,12 @@ export class CreateaccountpageComponent implements OnInit {
     }
 
     this.postrequest.postmethod(url, body).then(() => {
-      console.log("success")
+      console.log("success");
+      if(this.isartist){
+        this.router.navigateByUrl("/artistoptionspage");
+      }else{
+        this.router.navigateByUrl("/useroptionspage");
+      }
     }).catch((response) => { console.log("Information couldn't be found") });
   }
 
