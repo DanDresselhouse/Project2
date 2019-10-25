@@ -10,10 +10,10 @@ export class GetrequestService {
   constructor(private http: HttpClient) { }
 
   
-  getmethod(url: string): Promise<string> {
+  getmethod(url: string): Promise<any> {
 
     //put backend rest point here
-    let response: Promise<any> = this.http.get<string>(url).toPromise();
+    let response: Promise<any> = this.http.get<any>(url).toPromise();
     return response;
   }
 }
