@@ -16,7 +16,7 @@ export class LoginaristpageComponent implements OnInit {
   }
 
   username: string = "";
-  password: number = 0;
+  password: string = "";
 
   artist: Artist;
 
