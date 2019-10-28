@@ -1,11 +1,18 @@
 <!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
 <button type="button" routerLink = "/loginpage">Logout</button>
+<button type="button" (click) = "getallartists()">View Artists</button>
 
 <!-- searchinput will go into url on the components-->
 <input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
 <button type="button" (click)="search()">Search</button>
 
 <!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
+<!-- Make artist name a link to artist page to view artists profile and song list? -->
+
 <ul>
-    <li *ngFor="let song of searchresponse">{{song}}</li>
+    <li *ngFor="let song of songs">{{song}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let artist of artists">{{artist | json}}</li>
 </ul>

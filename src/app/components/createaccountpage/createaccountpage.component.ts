@@ -41,6 +41,7 @@ export class CreateaccountpageComponent implements OnInit {
     else {
       url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user";
     }
+    console.log(url);
 
     this.postrequest.postmethod(url, body).then(() => {
       console.log("success");
