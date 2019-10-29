@@ -1,6 +1,5 @@
 <!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
-<button type="button" routerLink = "/loginpage">Logout</button>
-<button type="button" (click) = "getallartists()">View Artists</button>
+<button type="button" routerLink="/loginpage">Logout</button>
 
 <!-- searchinput will go into url on the components-->
 <input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
@@ -15,6 +14,21 @@
 
 <table>
     <tr *ngFor="let artist of artists">
-    <td>{{artist.username}}</td>
-</tr>
+        <td>{{artist.username}}</td>
+    </tr>
+</table>
+
+<table>
+    <tr *ngFor="let artist of artists">
+        <a href={{song.link}}>
+            <td>{{song.name}}</td>
+        </a>
+        <td>{{song.rating}}</td>
+        <td><input type="text" placeholder="Leave a Comment"></td>
+        <td><span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span></td>
+    </tr>
 </table>
