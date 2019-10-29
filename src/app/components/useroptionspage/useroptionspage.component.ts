@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetrequestService } from 'src/services/getrequest.service';
 import { Song } from 'src/app/models/song';
-import { Artist } from 'src/app/Models/artist';
+import { Artist } from 'src/app/models/artist';
 
 @Component({
   selector: 'app-useroptionspage',

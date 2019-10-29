@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostrequestService } from 'src/services/postrequest.service';
-import { Artist } from 'src/app/Models/artist';
+import { Artist } from 'src/app/models/artist';
 import { Router } from '@angular/router';
 
 @Component({

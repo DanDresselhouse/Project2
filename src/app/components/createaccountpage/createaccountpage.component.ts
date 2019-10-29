@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist } from 'src/app/Models/artist';
+import { Artist } from 'src/app/models/artist';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { Router } from '@angular/router';
 
