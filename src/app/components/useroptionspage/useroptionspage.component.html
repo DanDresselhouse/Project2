@@ -13,6 +13,8 @@
     <li *ngFor="let song of songs">{{song}}</li>
 </ul>
 
-<ul>
-    <li *ngFor="let artist of artists">{{artist | json}}</li>
-</ul>
+<table>
+    <tr *ngFor="let artist of artists">
+    <td>{{artist.username}}</td>
+</tr>
+</table>
