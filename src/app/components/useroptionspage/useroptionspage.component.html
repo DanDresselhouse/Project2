@@ -25,10 +25,13 @@
         </a>
         <td>{{song.rating}}</td>
         <td><input type="text" placeholder="Leave a Comment"></td>
-        <td><span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span></td>
+        <td>
+            <div (click)="rateit(1)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(2)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(3)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(4)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(5)"><span class="fa fa-star"></span></div>
+        </td>
+        <td><button>Submit Comments</button></td>
     </tr>
 </table>

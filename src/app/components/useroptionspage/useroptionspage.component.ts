@@ -53,4 +53,8 @@ export class UseroptionspageComponent implements OnInit {
       this.songs = info;
     }).catch((response) => { console.log("Information couldn't be found") });
   }
+
+  rateit(){
+    
+  }
 }
