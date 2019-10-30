@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist } from 'src/app/Models/artist';
+import { Artist } from 'src/app/models/artist';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { Router } from '@angular/router';
+import { DataserviceService } from 'src/services/dataservice.service';
 
 @Component({
   selector: 'app-loginaristpage',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginaristpageComponent implements OnInit {
 
-  constructor(private postrequest: PostrequestService, private router: Router) { }
+  constructor(private postrequest: PostrequestService, private router: Router, private idService:DataserviceService) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,7 @@ export class LoginaristpageComponent implements OnInit {
   password: string = "";
 
   artist: Artist;
-
+  artistID:number = 0;
   //this logins the artist and sets the artist object
   login() {
 
@@ -29,12 +30,20 @@ export class LoginaristpageComponent implements OnInit {
       password: this.password
     };
 
-    //backend endpoint goes here
-    let url = "";
-
-    this.postrequest.postmethod(url, body).then(() => {
-      console.log("success");
+      //console.log(info);
+      this.artistID = 8;
+      this.idService.changeMessage(this.artistID);
       this.router.navigateByUrl("/artistoptionspage");
+
+    //backend endpoint goes here
+    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist/login";
+
+    this.postrequest.postmethod(url, body).then((info) => {
+      console.log(info);
+      this.artistID = info.artistID;
+      this.idService.changeMessage(this.artistID);
+      this.router.navigateByUrl("/artistoptionspage");
+
     }).catch((response) => { console.log("Information couldn't be found") });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataserviceService } from 'src/services/dataservice.service';
 
 @Component({
   selector: 'app-artistoptionspage',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistoptionspageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private idTransfer:DataserviceService) { }
 
+  id:number = 0;
   ngOnInit() {
+    this.idTransfer.currentMessage.subscribe(id => this.id=id);
+    console.log(this.id);
+
   }
 
 }
