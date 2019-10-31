@@ -2,8 +2,8 @@ import { timestamp } from 'aws-sdk/clients/cloudfront';
 
 export class Song {
 
-    songid: number;
-    artistid: number;
+    id: number;
+    artistId: number;
     name: string;
     releasedate: timestamp;
     albumname: string;
@@ -11,9 +11,9 @@ export class Song {
     rating: number;
     link: string;
 
-    constructor(songid: number, artistid:number, name: string, releasedate: timestamp, albumname:string, inalbum:boolean, rating: number,link:string) {
-        this.songid=songid;
-        this.artistid=artistid;
+    constructor(id: number, artistId:number, name: string, releasedate: timestamp, albumname:string, inalbum:boolean, rating: number,link:string) {
+        this.id=id;
+        this.artistId=artistId;
         this.name=name;
         this.releasedate=releasedate;
         this.albumname=albumname;
