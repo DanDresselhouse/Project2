@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="container" id="container">
+        <div class="page-header" id="title">
+            <h1 class="display-1">
+                Generic Music Website&trade;
+            </h1>
+        </div>
+        <div class="login" id="logincontainer">
+            <h1>Sign In As An Artist</h1>
+            <form action="POST" id="loginform">
+                <div class="form-group">
+                    <label for="username" id="usernamelabel">Username:</label>
+                    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username"
+                        name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" id="passwordlabel">Password:</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                        name="password">
+                </div>
+                <div class="links" id="links">
+                    <button type="button" class="btn btn-secondary" routerLink="/loginpage">Back to user login</button>
+                    <button type="button" (click)="login()" class="btn btn-primary">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
+<button type="button" routerLink="/loginpage">Logout</button>
+
+<!-- searchinput will go into url on the components-->
+<input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
+<button type="button" (click)="search()">Search</button>
+
+<!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
+<!-- Make artist name a link to artist page to view artists profile and song list? -->
+
+<ul>
+    <li *ngFor="let song of songs">{{song}}</li>
+</ul>
+
+<table>
+    <tr *ngFor="let artist of artists">
+        <td>{{artist.username}}</td>
+    </tr>
+</table>
+
+<table>
+    <tr *ngFor="let artist of artists">
+        <a href={{song.link}}>
+            <td>{{song.name}}</td>
+        </a>
+        <td>{{song.rating}}</td>
+        <td><input type="text" placeholder="Leave a Comment"></td>
+        <td>
+            <div (click)="rateit(1)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(2)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(3)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(4)"><span class="fa fa-star"></span></div>
+            <div (click)="rateit(5)"><span class="fa fa-star"></span></div>
+        </td>
+        <td><button>Submit Comments</button></td>
+    </tr>
+</table>
