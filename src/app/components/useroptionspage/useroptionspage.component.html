@@ -13,17 +13,19 @@
     <tr *ngFor="let song of songs">
         
             <td><a href={{song.link}}>{{song.name}}</a></td>
+            <td>{{song.albumName}}</td>
+            <td>{{song.releaseDate}}</td>
             
-            <td>{{song.artist.name}}</td>
+            <td>{{song.artistId}}</td>
 
-        <td><input type="text" placeholder="Leave a Comment"></td>
-        <td style="display: inline;">
+        <td><input type="text" placeholder="Leave a Comment" [(ngModel)]="commentid[song.id]"></td>
+        <td>
             
-            <span [ngClass]="[song.id,'class1']" (click)="rateit(1)" (mouseenter) = "temprate(1)" (mouseleave) = "oldrate()"></span>
-            <span [ngClass]="[song.id,'class2']"  (click)="rateit(2)" (mouseenter) = "temprate(2)" (mouseleave) = "oldrate()"></span>
-            <span [ngClass]="[song.id,'class3']"  (click)="rateit(3)" (mouseenter) = "temprate(3)" (mouseleave) = "oldrate()"></span>
-            <span [ngClass]="[song.id,'class4']"  (click)="rateit(4)" (mouseenter) = "temprate(4)" (mouseleave) = "oldrate()"></span>
-            <span [ngClass]="[song.id,'class5']"  (click)="rateit(5)" (mouseenter) = "temprate(5)" (mouseleave) = "oldrate()"></span>
+            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}" (click)="rateit(song, 1)" (mouseenter) = "onmouseeneter(song.id, 1)" (mouseleave) = "onmouseleave()"></span>
+            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,2), 'zoom': currentpossition[0]==song.id && currentpossition[1]==2}"  (click)="rateit(song, 2)" (mouseenter) = "onmouseeneter(song.id, 2)" (mouseleave) = "onmouseleave()"></span>
+            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,3), 'zoom': currentpossition[0]==song.id && currentpossition[1]==3}"  (click)="rateit(song, 3)" (mouseenter) = "onmouseeneter(song.id, 3)" (mouseleave) = "onmouseleave()"></span>
+            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,4), 'zoom': currentpossition[0]==song.id && currentpossition[1]==4}" (click)="rateit(song, 4)" (mouseenter) = "onmouseeneter(song.id, 4)" (mouseleave) = "onmouseleave()"></span>
+            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,5), 'zoom': currentpossition[0]==song.id && currentpossition[1]==5}"  (click)="rateit(song, 5)" (mouseenter) = "onmouseeneter(song.id, 5)" (mouseleave) = "onmouseleave()"></span>
         </td>
         <td><button (click)="submitcomment(song)">Submit Comments</button></td>
     </tr>
