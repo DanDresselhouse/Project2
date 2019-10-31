@@ -1,17 +1,20 @@
-//this is user or artist object
-export class User{
+import { Song } from './song';
+import { User } from './user';
 
-    commentid:number;
+//this is user or artist object
+export class Comment{
+
+    id:number;
     comment:string;
     rating:number;
-    userid:number;
-    songid:number;
+    user: User;
+    song: Song;
 
-    constructor(commentid:number, comment:string, rating:number, userid:number, songid:number){
-        this.commentid = commentid;
+    constructor(id:number, comment:string, rating:number, user: User, song: Song){
+        this.id = id;
         this.comment = comment;
         this.rating = rating;
-        this.userid = userid;
-        this.songid = songid;
+        this.user = user;
+        this.song = song;
     }
 }
