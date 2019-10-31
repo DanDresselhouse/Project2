@@ -1,11 +1,29 @@
-
-<h4>Sign In or Create a New Account</h4>
-
-<input type="text" placeholder="Username" [(ngModel)]="username">
-<input type="password" placeholder="Password" [(ngModel)]="password">
-<button type="button" (click)="login()">Sign In</button>
-<a routerLink="/createaccountpage">Create New Account</a>
-<a routerLink="/loginartistpage">Login as Artist</a>
-
-
-
+<div class="main">
+    <div class="container" id="container">
+        <div class="page-header" id="title">
+            <h1 class="display-1">
+                Generic Music Website&trade;
+            </h1>
+        </div>
+        <div class="login" id="logincontainer">
+            <h1>Sign In or Create a New Account</h1>
+            <form action="POST" id="loginform">
+                <div class="form-group">
+                    <label for="username" id="usernamelabel">Username:</label>
+                    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username"
+                        name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" id="passwordlabel">Password:</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                        name="password">
+                </div>
+                <button type="button" (click)="login()" class="btn btn-primary">Sign In</button>
+            </form>
+            <div class="links" id="links">
+                <a routerLink="/createaccountpage">Create New Account</a>
+                <a routerLink="/loginartistpage">Login as Artist</a>
+            </div>
+        </div>
+    </div>
+</div>

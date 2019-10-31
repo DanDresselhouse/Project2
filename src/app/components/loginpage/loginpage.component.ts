@@ -30,7 +30,7 @@ export class LoginpageComponent implements OnInit {
     };
 
     //backend endpoint goes here
-    let url = "";
+    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user/login";
 
     this.postrequest.postmethod(url,body).then(() => {
       console.log("success");

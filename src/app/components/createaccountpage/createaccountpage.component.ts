@@ -10,12 +10,23 @@ import { Router } from '@angular/router';
 })
 export class CreateaccountpageComponent implements OnInit {
 
-  constructor(private postrequest: PostrequestService, private router:Router) { }
+  constructor(private postrequest: PostrequestService, private router: Router) { }
 
   name: string = "";
   username: string = "";
   password: string = "";
+  confirmpassword: string = "";
   isartist: boolean = false;
+
+  nameflag: boolean = false;
+  checkname() {
+    if (this.name === "") {
+      this.nameflag = true;
+    }
+  }
+
+  confirmation:boolean = false;
+  confirmationmessage:string = "";
 
   artist: Artist;
 
@@ -31,26 +42,44 @@ export class CreateaccountpageComponent implements OnInit {
       password: this.password
     };
 
-    
-    let url="";
+    if (this.name === "") {
+      this.confirmation = true;
+      this.confirmationmessage = "Please enter your name";
+    } else if (this.username === "") {
+      this.confirmation = true;
+      this.confirmationmessage = "Please enter a username";
+    } else if (this.password === "") {
+      this.confirmation = true;
+      this.confirmationmessage = "Please enter a password";
+    } else {
+      if (this.confirmpassword != this.password) {
+        this.confirmation = true;
+        this.confirmationmessage = "Your passwords do not match";
+      } else {
 
-    //backend endpoint goes here
-    if (this.isartist) {
-      url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist";
-    }
-    else {
-      url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user";
-    }
-    console.log(url);
+        this.confirmation = false;
 
-    this.postrequest.postmethod(url, body).then(() => {
-      console.log("success");
-      if(this.isartist){
-        this.router.navigateByUrl("/artistoptionspage");
-      }else{
-        this.router.navigateByUrl("/useroptionspage");
+        let url = "";
+
+        //backend endpoint goes here
+        if (this.isartist) {
+          url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist";
+        }
+        else {
+          url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user";
+        }
+        console.log(url);
+
+        this.postrequest.postmethod(url, body).then(() => {
+          console.log("success");
+          if (this.isartist) {
+            this.router.navigateByUrl("/loginpage");
+          } else {
+            this.router.navigateByUrl("/loginpage");
+          }
+        }).catch((response) => { console.log("Information couldn't be found") });
       }
-    }).catch((response) => { console.log("Information couldn't be found") });
+    }
   }
 
 }
