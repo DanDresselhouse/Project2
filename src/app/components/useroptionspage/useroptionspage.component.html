@@ -3,35 +3,28 @@
 
 <!-- searchinput will go into url on the components-->
 <input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
-<button type="button" (click)="search()">Search</button>
+<button type="button" (click)="search(searchinput)">Search</button>
 
 <!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
 <!-- Make artist name a link to artist page to view artists profile and song list? -->
 
-<ul>
-    <li *ngFor="let song of songs">{{song}}</li>
-</ul>
 
-<table>
-    <tr *ngFor="let artist of artists">
-        <td>{{artist.username}}</td>
-    </tr>
-</table>
+<table class="table table-dark">
+    <tr *ngFor="let song of songs">
+        
+            <td><a href={{song.link}}>{{song.name}}</a></td>
+            
+            <td>{{song.artist.name}}</td>
 
-<table>
-    <tr *ngFor="let artist of artists">
-        <a href={{song.link}}>
-            <td>{{song.name}}</td>
-        </a>
-        <td>{{song.rating}}</td>
         <td><input type="text" placeholder="Leave a Comment"></td>
-        <td>
-            <div (click)="rateit(1)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(2)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(3)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(4)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(5)"><span class="fa fa-star"></span></div>
+        <td style="display: inline;">
+            
+            <span [ngClass]="[song.id,'class1']" (click)="rateit(1)" (mouseenter) = "temprate(1)" (mouseleave) = "oldrate()"></span>
+            <span [ngClass]="[song.id,'class2']"  (click)="rateit(2)" (mouseenter) = "temprate(2)" (mouseleave) = "oldrate()"></span>
+            <span [ngClass]="[song.id,'class3']"  (click)="rateit(3)" (mouseenter) = "temprate(3)" (mouseleave) = "oldrate()"></span>
+            <span [ngClass]="[song.id,'class4']"  (click)="rateit(4)" (mouseenter) = "temprate(4)" (mouseleave) = "oldrate()"></span>
+            <span [ngClass]="[song.id,'class5']"  (click)="rateit(5)" (mouseenter) = "temprate(5)" (mouseleave) = "oldrate()"></span>
         </td>
-        <td><button>Submit Comments</button></td>
+        <td><button (click)="submitcomment(song)">Submit Comments</button></td>
     </tr>
 </table>
