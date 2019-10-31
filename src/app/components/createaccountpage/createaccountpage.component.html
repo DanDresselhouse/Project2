@@ -1,7 +1,45 @@
-<input type="text" placeholder="Name" [(ngModel)]="name">
-<input type="text" placeholder="Username" [(ngModel)]="username">
-<input type="password" placeholder="Password" [(ngModel)]="password">
-<div>Are you an artist?</div>
-<input type="checkbox" [(ngModel)]="isartist">
-<button type="button" (click)="createaccount()">Create New Account</button>
-<a routerLink="/loginpage">Return to Main Menu</a>
+<div class="main">
+    <div class="container" id="container">
+        <div class="page-header" id="title">
+            <h1 class="display-1">
+                Generic Music Website&trade;
+            </h1>
+        </div>
+        <div class="creation" id="creation">
+            <h1>Create an account</h1>
+            <form action="POST" id="creationform">
+                <div class="form-group">
+                    <label for="name" id="creationname">Please enter your full name:</label>
+                    <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="username" id="creationusername">Please create a username:</label>
+                    <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username"
+                        name="username" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" id="creationpassword">Please enter a password:</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+                        name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword" id="confirmpassword">Please reenter your password:</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="confirmpassword"
+                        name="confirmpassword" id="confirmpasswordinput" required>
+                </div>
+                <div class="form-group">
+                    <label for="artist">Please select this box if you are an artist: </label>&nbsp;
+                    <input type="checkbox" [(ngModel)]="isartist" name="artist">
+                </div>
+                <div class="submitsection" id="submitsection">
+                    <button type="button" class="btn btn-secondary" routerLink="/loginpage" id="cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="createaccount()" id="submit">Create New
+                        Account</button>
+                </div>
+            </form>
+        </div>
+        <div class="response" id="response">
+            <span class="alert alert-danger" *ngIf="confirmation">{{confirmationmessage}}</span>
+        </div>
+    </div>
+</div>
