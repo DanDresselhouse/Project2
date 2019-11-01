@@ -12,6 +12,9 @@ import { LoginaristpageComponent } from './components/loginaristpage/loginaristp
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
 
+import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
+import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,9 @@ import { UseroptionspageComponent } from './components/useroptionspage/useroptio
     CreateaccountpageComponent,
     LoginaristpageComponent,
     ArtistoptionspageComponent,
-    UseroptionspageComponent
+    UseroptionspageComponent,
+    UserupdatepageComponent,
+    ArtistupdatepageComponent
   ],
   imports: [
     BrowserModule,
