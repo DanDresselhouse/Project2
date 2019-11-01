@@ -4,6 +4,7 @@ import { CreateaccountpageComponent } from './components/createaccountpage/creat
 import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { LoginaristpageComponent } from './components/loginaristpage/loginaristpage.component';
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
+import{ArtistupdatepageComponent} from './components/artistupdatepage/artistupdatepage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
 import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : "loginartistpage", component : LoginaristpageComponent},
   {path : "createaccountpage", component : CreateaccountpageComponent},
   {path : "userupdatepage", component : UserupdatepageComponent},
+  {path: "artistupdatepage", component : ArtistupdatepageComponent},
   {path : "**", component : LoginpageComponent}
 ];
 

@@ -1,1 +1,8 @@
-<p>artistupdatepage works!</p>
+<h2>Input the info you wish to change in the fields below; 
+        or input your current information  in the fields below if you with for them to remain the same. </h2>
+    <h4>New Name</h4>
+    <input type="text" placeholder="New Name" [(ngModel)]="newName">
+    <h4>New Password</h4>
+    <input type="text" placeholder="New Password" [(ngModel)]="newPassword">
+    <button type="button" (click) = "updateArtist()">update user</button>
+    <a routerLink="/artistoptionspage">Return to Main Menu</a>
