@@ -1,0 +1,8 @@
+.checked{
+    color: rgb(250, 223, 69);
+}
+
+
+.zoom:hover {
+    transform: scale(1.5); 
+  }
