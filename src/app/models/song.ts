@@ -10,8 +10,10 @@ export class Song {
     inalbum: boolean;
     rating: number;
     link: string;
+    artistname: string;
 
-    constructor(id: number, artistId:number, name: string, releasedate: timestamp, albumname:string, inalbum:boolean, rating: number,link:string) {
+    constructor(artistname: string, id: number, artistId:number, name: string, releasedate: timestamp, albumname:string, inalbum:boolean, rating: number,link:string) {
+        this.artistname = artistname;
         this.id=id;
         this.artistId=artistId;
         this.name=name;
