@@ -44,8 +44,8 @@ export class UseroptionspageComponent implements OnInit {
 
       console.log(info);
 
-      this.songs[songindex].artistId = info.name;
-      console.log(this.artists);
+      this.songs[songindex].artistname = info.name;
+      
 
 
     }).catch((response) => { console.log("Information couldn't be found") });
@@ -92,6 +92,10 @@ export class UseroptionspageComponent implements OnInit {
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/song/name/" + name;
     this.getrequest.getmethod(url).then((info) => {
       this.songs = info;
+
+      for(let i=0; i<this.songs.length; i++){
+        this.getartistbyid(this.songs[i].artistId, i);
+      }
 
     }).catch((response) => { console.log("Information couldn't be found") });
   }
