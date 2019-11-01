@@ -5,6 +5,7 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { LoginaristpageComponent } from './components/loginaristpage/loginaristpage.component';
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
+import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : "useroptionspage", component : UseroptionspageComponent},
   {path : "loginartistpage", component : LoginaristpageComponent},
   {path : "createaccountpage", component : CreateaccountpageComponent},
+  {path : "userupdatepage", component : UserupdatepageComponent},
   {path : "**", component : LoginpageComponent}
 ];
 
