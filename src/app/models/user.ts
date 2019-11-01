@@ -1,3 +1,5 @@
+import { Comment } from './comment';
+
 export class User{
 
     id: number;

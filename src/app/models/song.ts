@@ -23,6 +23,7 @@ export class Song {
         this.inalbum=inalbum;
         this.rating=rating;
         this.link=link;
-        this.albumart=albumart;
+        
+        
     }
 }

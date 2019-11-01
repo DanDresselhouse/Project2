@@ -66,23 +66,24 @@ export class UseroptionspageComponent implements OnInit {
       
     }).catch((response) => { console.log("Information couldn't be found") });
   }
-
+  
   // getallartists() {
   //   let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist";
-
+    
   //   this.getrequest.getmethod(url).then((info) => {
-
+      
   //     this.artists = info;
   //   }).catch((response) => { console.log("Information couldn't be found") });
   // }
 
   getuserbyid(id: number) {
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user/" + id;
-
+    
     this.getrequest.getmethod(url).then((info) => {
-
-      return info;
-
+      
+      this.thisuser = info;
+      console.log(this.thisuser);
+      
     }).catch((response) => { console.log("Information couldn't be found") });
     return null;
   }
@@ -91,6 +92,7 @@ export class UseroptionspageComponent implements OnInit {
   search(name: string) {
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/song/name/" + name;
     this.getrequest.getmethod(url).then((info) => {
+      console.log(info);
       this.songs = info;
 
       for(let i=0; i<this.songs.length; i++){
