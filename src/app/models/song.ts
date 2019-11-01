@@ -16,11 +16,13 @@ export class Song {
         this.artistname = artistname;
         this.id=id;
         this.artistId=artistId;
+
         this.name=name;
         this.releasedate=releasedate;
         this.albumname=albumname;
         this.inalbum=inalbum;
         this.rating=rating;
         this.link=link;
+        this.albumart=albumart;
     }
 }
