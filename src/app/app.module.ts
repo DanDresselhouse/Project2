@@ -11,6 +11,7 @@ import { CreateaccountpageComponent } from './components/createaccountpage/creat
 import { LoginaristpageComponent } from './components/loginaristpage/loginaristpage.component';
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
+import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
 
 import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
 import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
@@ -23,6 +24,7 @@ import { ArtistupdatepageComponent } from './components/artistupdatepage/artistu
     LoginaristpageComponent,
     ArtistoptionspageComponent,
     UseroptionspageComponent,
+    ArtistuploadsongpageComponent
     UserupdatepageComponent,
     ArtistupdatepageComponent
   ],
