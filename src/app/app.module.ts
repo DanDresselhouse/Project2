@@ -14,6 +14,7 @@ import { UseroptionspageComponent } from './components/useroptionspage/useroptio
 import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
 import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
 import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
+import { RatingsPipe } from './pipes/ratings.pipe';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,10 @@ import { ArtistupdatepageComponent } from './components/artistupdatepage/artistu
     ArtistoptionspageComponent,
     UseroptionspageComponent,
     ArtistuploadsongpageComponent,
+    ArtistuploadsongpageComponent,
     UserupdatepageComponent,
-    ArtistupdatepageComponent
+    ArtistupdatepageComponent,
+    RatingsPipe
   ],
   imports: [
     BrowserModule,
