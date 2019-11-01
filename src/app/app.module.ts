@@ -11,6 +11,7 @@ import { CreateaccountpageComponent } from './components/createaccountpage/creat
 import { LoginaristpageComponent } from './components/loginaristpage/loginaristpage.component';
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
+import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UseroptionspageComponent } from './components/useroptionspage/useroptio
     CreateaccountpageComponent,
     LoginaristpageComponent,
     ArtistoptionspageComponent,
-    UseroptionspageComponent
+    UseroptionspageComponent,
+    ArtistuploadsongpageComponent
   ],
   imports: [
     BrowserModule,
