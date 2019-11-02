@@ -34,7 +34,7 @@
                     <h4>Leave a comment:</h4>
                     <button class="btn btn-primary" id="submitcomment" (click)="submitcomment()">Submit</button>
                 </div>
-                <div class="submit-comment" id="submitcomment" style="height: 80px;">
+                <div class="submit-comment" id="submitcomment">
                     <span
                         [ngClass]="{'fa fa-star': true, 'checked' : ischecked(1), 'zoom': currentpossition==1}"
                         (click)="rateit(1)" (mouseenter)="onmouseeneter(1)"
