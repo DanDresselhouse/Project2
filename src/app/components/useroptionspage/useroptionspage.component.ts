@@ -6,11 +6,43 @@ import { DataService } from 'src/services/data.service';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
+import { transition, trigger, style, animate, state } from '@angular/animations';
+import { BlockingProxy } from 'blocking-proxy';
 
 @Component({
   selector: 'app-useroptionspage',
   templateUrl: './useroptionspage.component.html',
-  styleUrls: ['./useroptionspage.component.css']
+  styleUrls: ['./useroptionspage.component.css'],
+  animations: [
+    trigger (
+      'showSongInformation',
+      [
+        state('show', 
+          style({height: 100})
+        ),
+        state('hide',
+          style({height: 0})
+        ),
+        transition('hide => show', [
+          animate('1s')
+        ]),
+        transition('show => hide', [
+          animate('1s')
+        ])
+      ]
+    ),
+    trigger (
+      'expandDiv',
+      [
+        state('expand', 
+          style({height: '33%'})
+        ),
+        state('contract',
+          style({height: '25%'})
+        )
+      ]
+    )
+  ]
 })
 export class UseroptionspageComponent implements OnInit {
   userid: number = 0;
@@ -19,9 +51,20 @@ export class UseroptionspageComponent implements OnInit {
   songs: Array<Song>;
   artists: Array<string>=[];
 
+  isVisible: boolean = false;
+  randomnumber: number = 1;
+
+  isExpanded: boolean = false;
+
   constructor(private getrequest: GetrequestService, private data: DataService, private postrequest: PostrequestService) { }
 
   ngOnInit() {
+
+    this.randomnumber = Math.floor((Math.random()*100) + 1);
+    console.log(this.randomnumber);
+    if (this.randomnumber > 50) {
+      this.isVisible = true;
+    }
 
 
     this.data.currentMessage.subscribe(id => this.userid = id)
@@ -36,7 +79,17 @@ export class UseroptionspageComponent implements OnInit {
 
   }
 
-
+  currentsong: Array<number> = [];
+  showsonginfo: boolean = false;
+  showSongInfo(song: Song) {
+    if (song.isselected) {
+      song.isselected = false;
+      song.isexpanded = false;
+    } else {
+      song.isselected = true;
+      song.isexpanded = true;
+    }
+  }
 
   getartistbyid(artistid: number, songindex:number) {
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist/" + artistid;
@@ -119,7 +172,6 @@ export class UseroptionspageComponent implements OnInit {
 
 
   rateit(song: Song, i: number) {
-
     song.rating = i;
   }
 

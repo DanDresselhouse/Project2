@@ -1,0 +1,64 @@
+<div class="main">
+    <div class="container" id="container">
+        <button type="button" class="btn btn-secondary" id="returnbutton" routerLink="/useroptionspage">Back</button>
+        <div class="page-header" id="pageheader">
+            <h1 class="song-title" id="songtitle">Song Name
+                <!-- {{song.name}} -->
+            </h1>
+            <h1 class="song-title" id="songrating">X/5
+                <!-- AVERAGE RATING -->
+            </h1>
+        </div>
+        <div class="song" id="song">
+            <div class="song-info" id="songinfo">
+                <div class="album-art" id="albumart">
+                    <img src="" alt="Album Art goes here" height="400" width="400">
+                </div>
+                <div class="song-specifics" id="songspecifics">
+                    <h3>Artist: Artist name goes here
+                        <!-- {{song.artistname}} -->
+                    </h3>
+                    <h3>Album name: Album name goes here
+                        <!-- {{song.albumName}} -->
+                    </h3>
+                    <h3>Release date: Release date goes here
+                        <!-- {{song.releaseDate}} -->
+                    </h3>
+                </div>
+            </div>
+            <div class="song-link" id="songlink">
+                <audio src="" controls>Song link</audio>
+            </div>
+            <div class="comments" id="comments">
+                <div class="leave-comment-header" id="leavecommentheader">
+                    <h4>Leave a comment:</h4>
+                    <button class="btn btn-primary" id="submitcomment">Submit</button>
+                </div>
+                <div class="submit-comment" id="submitcomment">
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}"
+                        (click)="rateit(song, 1)" (mouseenter)="onmouseeneter(song.id, 1)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,2), 'zoom': currentpossition[0]==song.id && currentpossition[1]==2}"
+                        (click)="rateit(song, 2)" (mouseenter)="onmouseeneter(song.id, 2)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,3), 'zoom': currentpossition[0]==song.id && currentpossition[1]==3}"
+                        (click)="rateit(song, 3)" (mouseenter)="onmouseeneter(song.id, 3)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,4), 'zoom': currentpossition[0]==song.id && currentpossition[1]==4}"
+                        (click)="rateit(song, 4)" (mouseenter)="onmouseeneter(song.id, 4)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,5), 'zoom': currentpossition[0]==song.id && currentpossition[1]==5}"
+                        (click)="rateit(song, 5)" (mouseenter)="onmouseeneter(song.id, 5)"
+                        (mouseleave)="onmouseleave()"></span>
+                </div>
+                <textarea name="commentarea" id="commentarea" class="form-control comment-area"
+                    [(ngModel)]="commentid[song.id]"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
