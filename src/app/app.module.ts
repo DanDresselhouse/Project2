@@ -13,6 +13,11 @@ import { LoginaristpageComponent } from './components/loginaristpage/loginaristp
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
 import { SongpageComponent } from './components/songpage/songpage.component';
+import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
+
+import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
+import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { SongpageComponent } from './components/songpage/songpage.component';
     LoginaristpageComponent,
     ArtistoptionspageComponent,
     UseroptionspageComponent,
-    SongpageComponent
+    SongpageComponent,
+    ArtistuploadsongpageComponent,
+    UserupdatepageComponent,
+    ArtistupdatepageComponent
   ],
   imports: [
     BrowserModule,
