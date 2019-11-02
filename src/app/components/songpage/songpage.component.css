@@ -35,6 +35,12 @@
 .song-info {
     display: flex;
 }
+#albumart {
+    margin-bottom: 2%;
+}
+#songspecifics {
+    margin-left: 3%;
+}
 .comments {
     margin: auto;
     width: 60%;

@@ -12,7 +12,7 @@
         <div class="song" id="song">
             <div class="song-info" id="songinfo">
                 <div class="album-art" id="albumart">
-                    <img src="" alt="Album Art goes here" height="400" width="400">
+                    <img [src]="albumartpath" height="400" width="400">
                 </div>
                 <div class="song-specifics" id="songspecifics">
                     <h3>Artist: Artist name goes here
@@ -34,7 +34,7 @@
                     <h4>Leave a comment:</h4>
                     <button class="btn btn-primary" id="submitcomment">Submit</button>
                 </div>
-                <div class="submit-comment" id="submitcomment">
+                <!-- <div class="submit-comment" id="submitcomment">
                     <span
                         [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}"
                         (click)="rateit(song, 1)" (mouseenter)="onmouseeneter(song.id, 1)"
@@ -57,7 +57,7 @@
                         (mouseleave)="onmouseleave()"></span>
                 </div>
                 <textarea name="commentarea" id="commentarea" class="form-control comment-area"
-                    [(ngModel)]="commentid[song.id]"></textarea>
+                    [(ngModel)]="commentid[song.id]"></textarea> -->
             </div>
         </div>
     </div>

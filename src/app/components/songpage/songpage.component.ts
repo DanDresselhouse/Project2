@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SongpageComponent implements OnInit {
 
+  randomnumber: number = Math.floor((Math.random() * 3) + 1)
+
+  albumartpath: string = "https://songcollectionbucket.s3.us-east-2.amazonaws.com/zach" + this.randomnumber + ".jpg"
+
   constructor() { }
 
   ngOnInit() {
