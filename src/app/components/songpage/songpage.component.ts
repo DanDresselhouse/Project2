@@ -6,6 +6,7 @@ import { GetrequestService } from 'src/services/getrequest.service';
 import { Comment } from 'src/app/models/comment';
 
 import { PutrequestService } from 'src/services/putrequest.service';
+import { DataserviceService } from 'src/services/dataservice.service';
 
 @Component({
   selector: 'app-songpage',
@@ -17,11 +18,12 @@ export class SongpageComponent implements OnInit {
   thissong: Song;
   comments: Array<Comment>;
 
-  constructor(private postrequest: PostrequestService, private putrequest: PutrequestService, private getrequest: GetrequestService) { }
+  constructor(private idTransfer:DataserviceService, private postrequest: PostrequestService, private putrequest: PutrequestService, private getrequest: GetrequestService) { }
 
   async ngOnInit() {
 
-    this.userid = 2;
+    this.idTransfer.currentMessage.subscribe(id => this.userid=id);
+
     this.getsongbyid(1);
 
 

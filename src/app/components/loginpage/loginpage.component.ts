@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { Artist } from 'src/app/models/artist';
 import { Router } from '@angular/router';
-import { DataService } from 'src/services/data.service';
+import { DataserviceService } from 'src/services/dataservice.service';
 
 @Component({
   selector: 'app-loginpage',
@@ -11,7 +11,7 @@ import { DataService } from 'src/services/data.service';
 })
 export class LoginpageComponent implements OnInit {
 
-  constructor(private postrequest: PostrequestService, private router: Router, private data: DataService) { }
+  constructor(private postrequest: PostrequestService, private router: Router, private data: DataserviceService) { }
 
   ngOnInit() {
   }

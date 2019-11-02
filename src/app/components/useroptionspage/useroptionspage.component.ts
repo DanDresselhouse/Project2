@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
 import { transition, trigger, style, animate, state } from '@angular/animations';
 import { BlockingProxy } from 'blocking-proxy';
+import { DataserviceService } from 'src/services/dataservice.service';
 
 @Component({
   selector: 'app-useroptionspage',
@@ -56,7 +57,7 @@ export class UseroptionspageComponent implements OnInit {
 
   isExpanded: boolean = false;
 
-  constructor(private getrequest: GetrequestService, private data: DataService, private postrequest: PostrequestService) { }
+  constructor(private idTransfer:DataserviceService, private getrequest: GetrequestService, private data: DataService, private postrequest: PostrequestService) { }
 
   ngOnInit() {
 
@@ -69,10 +70,10 @@ export class UseroptionspageComponent implements OnInit {
 
     this.data.currentMessage.subscribe(id => this.userid = id)
 
+    
+    this.idTransfer.currentMessage.subscribe(id => this.userid=id);
+    this.getuserbyid(this.userid);
 
-    //TEMPORARY FOR TESTING USE THE BELOW IMPLEMENTATION
-    this.getuserbyid(2);
-    //let thisuser = this.getuserbyid(this.userid);
 
     this.getallsongs();
 
