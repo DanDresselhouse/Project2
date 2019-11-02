@@ -47,9 +47,9 @@
 .content {
     margin: auto;
     margin-top: 2%;
-    width: 80%;
+    width: 60%;
     box-shadow: 1px 1px 5px gray;
-    min-height: 25%;
+    height: 22%;
 }
 .content:last-child {
     margin-bottom: 2%;
@@ -63,12 +63,20 @@
 #songinfo {
     list-style-type: none;
 }
-.submit-comment {
-    float: right;
-    margin-right: 5%;
-    margin-bottom: 1%;
+#contentbody {
+    margin-left: 70%;
 }
-.comment-area {
-    margin: auto;
-    width: 90%;
+.song-link {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+#account {
+    float: right;
+    margin-top: 1%;
+    margin-bottom: -3%;
+}
+#logout {
+    float: left;
+    margin-top: 1%;
+    margin-bottom: -3%;
 }
