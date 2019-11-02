@@ -99,6 +99,8 @@ export class SongpageComponent implements OnInit {
 
   submitcomment(thissong: Song) {
 
+    let isnewcomment: boolean = this.hasusercommented();
+
     let body = {
       id: this.commentid,
       comment: this.songcomment,
@@ -110,7 +112,7 @@ export class SongpageComponent implements OnInit {
     console.log(body);
 
     //backend endpoint goes here
-    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
+    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment";
 
     if (this.hasusercommented()) {
       this.putrequest.putmethod(url, body).then(() => {
@@ -121,6 +123,8 @@ export class SongpageComponent implements OnInit {
     }
     else {
       this.postrequest.postmethod(url, body).then(() => {
+
+        url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
 
         console.log("success")
 
@@ -137,7 +141,9 @@ export class SongpageComponent implements OnInit {
         return true;
       }
     }
+    console.log("this is false");
     return false;
   }
+
 
 }
