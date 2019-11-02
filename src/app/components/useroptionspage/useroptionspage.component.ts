@@ -70,7 +70,7 @@ export class UseroptionspageComponent implements OnInit {
     this.data.currentMessage.subscribe(id => this.userid = id)
 
 
-    //TEMPORARY FOR TESTING USE THE BELOW IMPLEMENTATION FROM BELOW
+    //TEMPORARY FOR TESTING USE THE BELOW IMPLEMENTATION
     this.getuserbyid(2);
     //let thisuser = this.getuserbyid(this.userid);
 
