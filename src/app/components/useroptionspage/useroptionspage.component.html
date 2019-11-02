@@ -1,32 +1,115 @@
-<!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
-<button type="button" routerLink="/loginpage">Logout</button>
+<div class="main">
+    <div class="container" id="container">
+        <div class="page-header" id="pageheader">
+            <div class="header" id="header">
+                <!-- searchinput will go into url on the components-->
+                <h1 id="searchheader">Search:</h1>
+                <input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name" id="search">
+                <button type="button" (click)="search(searchinput)" id="searchbtn"
+                    class="btn btn-primary">Search</button>
+                <audio src="https://songcollectionbucket.s3.us-east-2.amazonaws.com/Celine.wav" controls></audio>
+                <audio src="https://songcollectionbucket.s3.us-east-2.amazonaws.com/CrocodileRock.wav" controls></audio>
+            </div>
+        </div>
+        <!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
+        <button type="button" routerLink="/loginpage">Logout</button>
 
-<!-- searchinput will go into url on the components-->
-<input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
-<button type="button" (click)="search(searchinput)">Search</button>
+        <div class="content-container" id="contentbody">
+            <div class="content" id="content" *ngFor="let song of songs"
+                [@expandDiv]="song.isexpanded ? 'expand' : 'contract'">
+                <div class="content-header" id="contentheader">
+                    <h2 id="songtitle">Song: {{song.name}}</h2>
+                    <h2 id="songrating">Average Rating:
+                        <!-- AVERAGE RATING GOES HERE -->/5</h2>
+                </div>
+                <div class="content-body" id="contentbody">
+                    <h4><a (click)="showSongInfo(song)">Show song information</a></h4>
+                    <ul id="songinfo" *ngIf="song.isselected"
+                        [@showSongInformation]="song.isexpanded ? 'show' : 'hide'">
+                        <li>Artist: {{song.artistname}}</li>
+                        <li>Album: {{song.albumName}}</li>
+                        <li>ReleaseDate: {{song.releaseDate}}</li>
+                    </ul>
+                    <div class="submit-comment" id="submitcomment">
+                        <span
+                            [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}"
+                            (click)="rateit(song, 1)" (mouseenter)="onmouseeneter(song.id, 1)"
+                            (mouseleave)="onmouseleave()"></span>
+                        <span
+                            [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,2), 'zoom': currentpossition[0]==song.id && currentpossition[1]==2}"
+                            (click)="rateit(song, 2)" (mouseenter)="onmouseeneter(song.id, 2)"
+                            (mouseleave)="onmouseleave()"></span>
+                        <span
+                            [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,3), 'zoom': currentpossition[0]==song.id && currentpossition[1]==3}"
+                            (click)="rateit(song, 3)" (mouseenter)="onmouseeneter(song.id, 3)"
+                            (mouseleave)="onmouseleave()"></span>
+                        <span
+                            [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,4), 'zoom': currentpossition[0]==song.id && currentpossition[1]==4}"
+                            (click)="rateit(song, 4)" (mouseenter)="onmouseeneter(song.id, 4)"
+                            (mouseleave)="onmouseleave()"></span>
+                        <span
+                            [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,5), 'zoom': currentpossition[0]==song.id && currentpossition[1]==5}"
+                            (click)="rateit(song, 5)" (mouseenter)="onmouseeneter(song.id, 5)"
+                            (mouseleave)="onmouseleave()"></span>
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                    <textarea name="commentarea" id="commentarea" class="form-control comment-area"
+                        [(ngModel)]="commentid[song.id]"></textarea>
+                </div>
+            </div>
+        </div>
 
-<!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
-<!-- Make artist name a link to artist page to view artists profile and song list? -->
+        <!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
+        <!-- Make artist name a link to artist page to view artists profile and song list? -->
 
 
-<table class="table table-dark">
-    <tr *ngFor="let song of songs">
-        
-            <td><a href={{song.link}}>{{song.name}}</a></td>
-            <td>{{song.albumName}}</td>
-            <td>{{song.releaseDate}}</td>
-            
-            <td>{{song.artistname}}</td>
+        <!-- <table class="table table-dark">
+            <tr *ngFor="let song of songs">
 
-        <td><input type="text" placeholder="Leave a Comment" [(ngModel)]="commentid[song.id]"></td>
-        <td>
-            
-            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}" (click)="rateit(song, 1)" (mouseenter) = "onmouseeneter(song.id, 1)" (mouseleave) = "onmouseleave()"></span>
-            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,2), 'zoom': currentpossition[0]==song.id && currentpossition[1]==2}"  (click)="rateit(song, 2)" (mouseenter) = "onmouseeneter(song.id, 2)" (mouseleave) = "onmouseleave()"></span>
-            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,3), 'zoom': currentpossition[0]==song.id && currentpossition[1]==3}"  (click)="rateit(song, 3)" (mouseenter) = "onmouseeneter(song.id, 3)" (mouseleave) = "onmouseleave()"></span>
-            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,4), 'zoom': currentpossition[0]==song.id && currentpossition[1]==4}" (click)="rateit(song, 4)" (mouseenter) = "onmouseeneter(song.id, 4)" (mouseleave) = "onmouseleave()"></span>
-            <span [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,5), 'zoom': currentpossition[0]==song.id && currentpossition[1]==5}"  (click)="rateit(song, 5)" (mouseenter) = "onmouseeneter(song.id, 5)" (mouseleave) = "onmouseleave()"></span>
-        </td>
-        <td><button (click)="submitcomment(song)">Submit Comments</button></td>
-    </tr>
-</table>
+                <td><a href={{song.link}}>{{song.name}}</a></td>
+                <td>{{song.albumName}}</td>
+                <td>{{song.releaseDate}}</td>
+
+                <td>{{song.artistname}}</td>
+
+                <td><input type="text" placeholder="Leave a Comment" [(ngModel)]="commentid[song.id]"></td>
+                <td>
+
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,1), 'zoom': currentpossition[0]==song.id && currentpossition[1]==1}"
+                        (click)="rateit(song, 1)" (mouseenter)="onmouseeneter(song.id, 1)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,2), 'zoom': currentpossition[0]==song.id && currentpossition[1]==2}"
+                        (click)="rateit(song, 2)" (mouseenter)="onmouseeneter(song.id, 2)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,3), 'zoom': currentpossition[0]==song.id && currentpossition[1]==3}"
+                        (click)="rateit(song, 3)" (mouseenter)="onmouseeneter(song.id, 3)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,4), 'zoom': currentpossition[0]==song.id && currentpossition[1]==4}"
+                        (click)="rateit(song, 4)" (mouseenter)="onmouseeneter(song.id, 4)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(song,5), 'zoom': currentpossition[0]==song.id && currentpossition[1]==5}"
+                        (click)="rateit(song, 5)" (mouseenter)="onmouseeneter(song.id, 5)"
+                        (mouseleave)="onmouseleave()"></span>
+                </td>
+                <td><button (click)="submitcomment(song)">Submit Comments</button></td>
+            </tr>
+        </table> -->
+    </div>
+
+
+
+
+
+
+
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/L_jWHffIx5E" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        style="float:right; height: 100vh; width: 375px; position: absolute; top: 0; right: 0;"
+        [style.display]="isVisible ? 'block' : 'none'"></iframe>
+</div>
