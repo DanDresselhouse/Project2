@@ -14,9 +14,9 @@ import { ArtistoptionspageComponent } from './components/artistoptionspage/artis
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
 import { SongpageComponent } from './components/songpage/songpage.component';
 import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
-
 import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
 import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
+import { RatingsPipe } from './pipes/ratings.pipe';
 
 
 @NgModule({
@@ -27,10 +27,12 @@ import { ArtistupdatepageComponent } from './components/artistupdatepage/artistu
     LoginaristpageComponent,
     ArtistoptionspageComponent,
     UseroptionspageComponent,
+    ArtistuploadsongpageComponent,
     SongpageComponent,
     ArtistuploadsongpageComponent,
     UserupdatepageComponent,
-    ArtistupdatepageComponent
+    ArtistupdatepageComponent,
+    RatingsPipe
   ],
   imports: [
     BrowserModule,
