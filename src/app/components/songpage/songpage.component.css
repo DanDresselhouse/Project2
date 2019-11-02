@@ -1,0 +1,52 @@
+.checked {
+    color: rgb(250, 223, 69);
+}
+
+.zoom:hover {
+    transform: scale(1.5);
+}
+
+.main {
+    background-color: lightgray;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+.container {
+    background-color: white;
+    min-height: 100vh;
+    height: 100%;
+    border-right: 1px solid orange;
+    border-left: 1px solid orange;
+}
+#returnbutton {
+    margin-bottom: -5%;
+}
+#pageheader {
+    display: flex;
+}
+.song-title {
+    width: 50%;
+    font-size: 5em;
+}
+#songrating {
+    text-align: right;
+}
+.song-info {
+    display: flex;
+}
+.comments {
+    margin: auto;
+    width: 60%;
+}
+.leave-comment-header {
+    display: flex;
+    justify-content: space-between;
+}
+#submitcomment {
+    float: right;
+    margin-bottom: 1%;
+}
+.comment-area {
+    height: 130px;
+}
