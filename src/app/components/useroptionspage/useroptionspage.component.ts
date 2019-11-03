@@ -47,6 +47,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class UseroptionspageComponent implements OnInit {
+  userid:number;
   searchinput: string = "";
   songs: Array<Song>;
   artists: Array<string>=[];
@@ -67,6 +68,10 @@ export class UseroptionspageComponent implements OnInit {
     if (this.randomnumber > 50) {
       this.isVisible = true;
     }
+
+
+    this.idTransfer.currentMessage.subscribe(id => this.userid=id);
+    this.idTransfer.changeMessage(this.userid);
 
 
 

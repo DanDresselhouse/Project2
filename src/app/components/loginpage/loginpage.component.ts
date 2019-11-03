@@ -11,7 +11,7 @@ import { DataserviceService } from 'src/services/dataservice.service';
 })
 export class LoginpageComponent implements OnInit {
 
-  constructor(private postrequest: PostrequestService, private router: Router, private data: DataserviceService) { }
+  constructor(private postrequest: PostrequestService, private router: Router, private idTransfer: DataserviceService) { }
 
   ngOnInit() {
   }
@@ -42,7 +42,7 @@ export class LoginpageComponent implements OnInit {
       if (info != null) {
         console.log(info);
         this.userid = info.id;
-        this.data.changeMessage(this.userid);
+        this.idTransfer.changeMessage(this.userid);
         this.router.navigateByUrl("/useroptionspage");
       }
     }).catch((response) => { this.incorrectpasswordmessage = "Incorrect username or password. Please try again." });

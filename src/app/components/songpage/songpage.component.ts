@@ -27,8 +27,11 @@ export class SongpageComponent implements OnInit {
     this.idTransfer.currentMessage.subscribe(id => this.userid=id);
 
     this.data.currentMessage.subscribe(id => this.songid=id);
-    console.log("this song is")
+    console.log("this song is");
     console.log(this.songid);
+
+    console.log("this user is ");
+    console.log(this.userid);
 
 
     this.getsongbyid(this.songid);
@@ -148,17 +151,19 @@ export class SongpageComponent implements OnInit {
       this.putrequest.putmethod(url, body).then(() => {
 
         console.log("success")
+        this.getcommentsbysongid(this.thissong.id);
 
       }).catch((response) => { console.log("something went wrong") });
     }
     else {
+      url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
       this.postrequest.postmethod(url, body).then(() => {
 
-        url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
-
         console.log("success")
+        this.getcommentsbysongid(this.thissong.id);
 
-      }).catch((response) => { console.log("something went wrong") });
+
+      }).catch((response) => { console.log("something went wrong with posting") });
     }
 
 
