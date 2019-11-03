@@ -17,8 +17,6 @@
             <div class="content" id="content" *ngFor="let song of songs">
                 <div class="content-header" id="contentheader">
                     <h2 id="songtitle">{{song.name}}</h2>
-                    <h2 id="songrating">Average Rating:
-                        {{comments | ratings}}/5</h2>
                 </div>
                 <audio src="{{song.link}}" class="song-link" controls></audio>
                 <div class="content-body" id="contentbody">

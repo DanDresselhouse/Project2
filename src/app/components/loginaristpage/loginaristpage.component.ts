@@ -42,7 +42,7 @@ export class LoginaristpageComponent implements OnInit {
       console.log(info);
       this.artistID = info.artistID;
       this.idService.changeMessage(this.artistID);
-      this.router.navigateByUrl("/artistoptionspage");
+      this.router.navigateByUrl("/artistuploadsong");
 
     }).catch((response) => { console.log("Information couldn't be found") });
   }
