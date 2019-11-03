@@ -32,7 +32,7 @@ import { RatingsPipe } from './pipes/ratings.pipe';
     ArtistuploadsongpageComponent,
     UserupdatepageComponent,
     ArtistupdatepageComponent,
-    RatingsPipe
+    RatingsPipe,
   ],
   imports: [
     BrowserModule,

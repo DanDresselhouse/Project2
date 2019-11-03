@@ -22,7 +22,7 @@ export class ArtistupdatepageComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentMessage.subscribe(id => this.artistid = id);
-    this.getartistbyid(3);
+    this.getartistbyid(this.artistid);
     //let thisartist = this.getartistbyid(this.artistid);
 
     //console.log(this.userid);

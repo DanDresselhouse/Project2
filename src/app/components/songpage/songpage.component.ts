@@ -19,14 +19,16 @@ export class SongpageComponent implements OnInit {
   songid: number = 0;
   thissong: Song;
   comments: Array<Comment> = null;
+  randomnumber: number = 1;
+  albumartpath: string;
 
-  constructor(private idTransfer:DataserviceService, private postrequest: PostrequestService, private putrequest: PutrequestService, private getrequest: GetrequestService, private data: DataService) { }
+  constructor(private idTransfer: DataserviceService, private postrequest: PostrequestService, private putrequest: PutrequestService, private getrequest: GetrequestService, private data: DataService) { }
 
   ngOnInit() {
 
-    this.idTransfer.currentMessage.subscribe(id => this.userid=id);
+    this.idTransfer.currentMessage.subscribe(id => this.userid = id);
 
-    this.data.currentMessage.subscribe(id => this.songid=id);
+    this.data.currentMessage.subscribe(id => this.songid = id);
     console.log("this song is");
     console.log(this.songid);
 
@@ -35,8 +37,6 @@ export class SongpageComponent implements OnInit {
 
 
     this.getsongbyid(this.songid);
-
-
   }
 
   getuserbyid(id: number) {
@@ -52,7 +52,7 @@ export class SongpageComponent implements OnInit {
   }
 
   getsongbyid(id: number) {
-    
+
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/song/" + id;
 
     this.getrequest.getmethod(url).then((info) => {
@@ -64,8 +64,18 @@ export class SongpageComponent implements OnInit {
 
       this.getartistbyid();
 
+      console.log(this.thissong);
+
+      if (this.thissong.albumArt !== "") {
+        this.albumartpath = this.thissong.albumArt;
+      } else {
+        console.log(this.thissong.albumArt + " oaisndoia");
+        this.randomnumber = Math.floor((Math.random() * 3) + 1)
+        this.albumartpath = "https://songcollectionbucket.s3.us-east-2.amazonaws.com/zach" + this.randomnumber + ".jpg"
+      }
+
     }).catch((response) => { console.log("Information couldn't be found") });
-  
+
     return null;
   }
 
@@ -76,7 +86,7 @@ export class SongpageComponent implements OnInit {
       console.log(info);
 
       this.thissong.artistname = info.name;
-      
+
 
 
     }).catch((response) => { console.log("Information couldn't be found") });
@@ -91,13 +101,10 @@ export class SongpageComponent implements OnInit {
       console.log(info);
 
     }).catch((response) => { console.log("Information couldn't be found") });
-    
+
   }
 
   currentpossition: number = 0;
-  randomnumber: number = Math.floor((Math.random() * 3) + 1)
-
-  albumartpath: string = "https://songcollectionbucket.s3.us-east-2.amazonaws.com/zach" + this.randomnumber + ".jpg"
 
 
   ischecked(star: number) {

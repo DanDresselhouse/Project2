@@ -25,7 +25,7 @@ export class UserupdatepageComponent implements OnInit {
   ngOnInit() {
 
     this.data.currentMessage.subscribe(id => this.userid = id);
-    this.getuserbyid(2);
+    this.getuserbyid(this.userid);
     //let thisuser = this.getuserbyid(this.userid);
 
     //console.log(this.userid);
