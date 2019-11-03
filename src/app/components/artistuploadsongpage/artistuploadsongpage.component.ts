@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { Router } from '@angular/router';
+import { DataserviceService } from 'src/services/dataservice.service';
 import { UploadService } from 'src/services/upload.service';
 
 @Component({
@@ -21,12 +22,13 @@ export class ArtistuploadsongpageComponent implements OnInit {
   submittedform: boolean = false;
   correct: boolean = false;
 
-  constructor(private postrequest: PostrequestService, private router: Router, private uploadService: UploadService) { }
+  constructor(private idTransfer:DataserviceService, private postrequest: PostrequestService, private router: Router, private uploadService: UploadService) { }
 
   ngOnInit() {
 
     //get artist id but for testing its a constant for now
-    this.artistid = 3;
+    this.idTransfer.currentMessage.subscribe(id => this.artistid=id);
+    console.log(this.artistid);
   }
 
   submitsong() {

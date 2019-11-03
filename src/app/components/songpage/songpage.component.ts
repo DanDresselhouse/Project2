@@ -160,7 +160,7 @@ export class SongpageComponent implements OnInit {
         console.log("success")
         this.getcommentsbysongid(this.thissong.id);
 
-      }).catch((response) => { console.log("something went wrong") });
+      }).catch((response) => { console.log("something went wrong with putting") });
     }
     else {
       url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
