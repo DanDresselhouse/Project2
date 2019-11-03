@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostrequestService } from 'src/services/postrequest.service';
 import { Router } from '@angular/router';
+import { UploadService } from 'src/services/upload.service';
 
 @Component({
   selector: 'app-artistuploadsongpage',
@@ -8,11 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./artistuploadsongpage.component.css']
 })
 export class ArtistuploadsongpageComponent implements OnInit {
-  songname:string = "";
-  albumname:string = "";
-  artistid:number = 0;
+  songname: string = "";
+  albumname: string = "";
+  artistid: number = 0;
 
-  constructor(private postrequest: PostrequestService, private router: Router) { }
+  selectedFiles: FileList;
+
+  albumart: FileList;
+
+  submittedform: boolean = false;
+  correct: boolean = false;
+
+  constructor(private postrequest: PostrequestService, private router: Router, private uploadService: UploadService) { }
 
   ngOnInit() {
 
@@ -20,7 +28,7 @@ export class ArtistuploadsongpageComponent implements OnInit {
     this.artistid = 3;
   }
 
-  submitsong(){
+  submitsong() {
 
     let body = {
       id: 0,
@@ -28,11 +36,13 @@ export class ArtistuploadsongpageComponent implements OnInit {
       name: this.songname,
       releaseDate: Date.now(),
       albumName: this.albumname,
-      inAlbum:1,
+      inAlbum: 1,
       rating: 0,
-      link: "temp link",
-      albumArt: "temp albumart link"
+      link: "https://songcollectionbucket.s3.us-east-2.amazonaws.com/" + this.selectedFiles.item(0).name,
+      albumArt: "https://songcollectionbucket.s3.us-east-2.amazonaws.com/" + this.albumart.item(0).name
     }
+
+    console.log(this.albumart);
 
     console.log(body);
 
@@ -41,8 +51,28 @@ export class ArtistuploadsongpageComponent implements OnInit {
     this.postrequest.postmethod(url, body).then((info) => {
       console.log("success");
       console.log(info)
-    }).catch((response) => { console.log("Information couldn't be found") });
+      this.submittedform = true;
+      this.correct = true;
+    }).catch((response) => { console.log("Information couldn't be found"); this.correct = false; this.submittedform = true; });
 
+  }
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.uploadService.uploadFile(file);
+    console.log(this.selectedFiles.item(0).name);
+  }
+
+  selectMusicFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  selectAlbumArt(event) {
+    this.albumart = event.target.files;
+  }
+
+  uploadEverything() {
+    this.upload();
+    this.submitsong();
   }
 
 }
