@@ -1,0 +1,65 @@
+<div class="main">
+    <div class="container" id="container">
+        <button type="button" class="btn btn-secondary" id="returnbutton" routerLink="/useroptionspage">Back</button>
+        <div class="page-header" id="pageheader">
+            <h1 class="song-title" id="songtitle">
+                {{thissong.name}}
+            </h1>
+            <h1 class="song-title" id="songrating">{{comments | ratings}}/5</h1>
+        </div>
+        <div class="song" id="song">
+            <div class="song-info" id="songinfo">
+                <div class="album-art" id="albumart">
+                    <img [src]="albumartpath" height="400" width="400">
+                </div>
+                <div class="song-specifics" id="songspecifics">
+                    <h3>Artist: 
+                        {{thissong.artistname}}
+                    </h3>
+                    <h3>Album name: 
+                        {{thissong.albumName}}
+                    </h3>
+                    <h3>Release date: {{thissong.releaseDate | date: 'yyyy-MM-dd'}}
+                    </h3>
+                </div>
+            </div>
+            <div class="song-link" id="songlink">
+                <audio src={{thissong.link}} controls>Song link</audio>
+            </div>
+            <div class="comments" id="comments">
+                <div class="leave-comment-header" id="leavecommentheader">
+                    <h4>Leave a comment:</h4>
+                    <button class="btn btn-primary" id="submitcomment" (click)="submitcomment()">Submit</button>
+                </div>
+                <div class="submit-comment" id="submitcomment">
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(1), 'zoom': currentpossition==1}"
+                        (click)="rateit(1)" (mouseenter)="onmouseeneter(1)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(2), 'zoom': currentpossition==2}"
+                        (click)="rateit(2)" (mouseenter)="onmouseeneter(2)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(3), 'zoom': currentpossition==3}"
+                        (click)="rateit(3)" (mouseenter)="onmouseeneter(3)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(4), 'zoom': currentpossition==4}"
+                        (click)="rateit(4)" (mouseenter)="onmouseeneter(4)"
+                        (mouseleave)="onmouseleave()"></span>
+                    <span
+                        [ngClass]="{'fa fa-star': true, 'checked' : ischecked(5), 'zoom': currentpossition==5}"
+                        (click)="rateit(5)" (mouseenter)="onmouseeneter(5)"
+                        (mouseleave)="onmouseleave()"></span>
+                </div>
+                <textarea name="commentarea" id="commentarea" class="form-control comment-area"
+                    [(ngModel)]="songcomment"></textarea>
+            </div>
+        </div>
+        <div *ngFor="let comment of comments" class="comment-list">
+            <h3>User {{comment.user}} says:</h3>
+            <h4>{{comment.comment}}</h4>
+        </div>
+    </div>
+</div>

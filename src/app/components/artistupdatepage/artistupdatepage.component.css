@@ -1,0 +1,36 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    background-color: lightgray;
+}
+.container {
+    margin: auto;
+    height: 100%;
+    border-left: 1px solid orange;
+    border-right: 1px solid orange;
+    background-color: white;
+    text-align: center;
+}
+.display-1 {
+    font-size: 4em;
+}
+
+.update {
+    margin-top: 5%;
+}
+
+#updateform {
+    width: 40%;
+    margin: auto;
+    padding: 15px;
+}
+#newnamelabel, #newpasswordlabel {
+    float: left;
+}
+
+.btn-primary {
+    float: right;
+}
+.btn-secondary {
+    float: left;
+}

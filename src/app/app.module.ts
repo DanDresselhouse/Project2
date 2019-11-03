@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,12 @@ import { CreateaccountpageComponent } from './components/createaccountpage/creat
 import { LoginaristpageComponent } from './components/loginaristpage/loginaristpage.component';
 import { ArtistoptionspageComponent } from './components/artistoptionspage/artistoptionspage.component';
 import { UseroptionspageComponent } from './components/useroptionspage/useroptionspage.component';
+import { SongpageComponent } from './components/songpage/songpage.component';
+import { ArtistuploadsongpageComponent } from './components/artistuploadsongpage/artistuploadsongpage.component';
+import { UserupdatepageComponent } from './components/userupdatepage/userupdatepage.component';
+import { ArtistupdatepageComponent } from './components/artistupdatepage/artistupdatepage.component';
+import { RatingsPipe } from './pipes/ratings.pipe';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +26,21 @@ import { UseroptionspageComponent } from './components/useroptionspage/useroptio
     CreateaccountpageComponent,
     LoginaristpageComponent,
     ArtistoptionspageComponent,
-    UseroptionspageComponent
+    UseroptionspageComponent,
+    ArtistuploadsongpageComponent,
+    SongpageComponent,
+    ArtistuploadsongpageComponent,
+    UserupdatepageComponent,
+    ArtistupdatepageComponent,
+    RatingsPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFileUploaderModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,41 @@
+<div class="main">
+    <div class="container" id="container">
+        <div class="page-header" id="pageheader">
+            <button type="button" class="btn btn-secondary" routerLink="/loginpage">Logout</button>
+            <h1 id="pagetitle">Upload Songs</h1>
+        </div>
+        <div class="upload-body" id="uploadbody">
+            <form>
+                <h2>Upload Music</h2>
+                <div class="form-group">
+                    <label for="songname">Song name:</label>
+                    <input type="text" placeholder="Song Name" [(ngModel)]="songname" name="songname"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="albumname">Album name (Leave blank if single):</label>
+                    <input type="text" placeholder="Album Name" [(ngModel)]="albumname" name="albumname"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="albumart">Album cover:</label>
+                    <label class="btn btn-default">
+                        <input type="file" (change)="selectAlbumArt($event)" [(ngModel)]="albumart" id="uploadart"
+                            name="albumart">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="songlink">Song file:</label>
+                    <label class="btn btn-default">
+                        <input type="file" (change)="selectMusicFile($event)" name="songlink">
+                    </label>
+                </div>
+                <button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadEverything()">Upload</button>
+            </form>
+            <div *ngIf="submittedform" id="verification">
+                <span *ngIf="correct" class="alert alert-success">Song uploaded successfully</span>
+                <span *ngIf="!correct" class="alert alert-danger">Something went wrong, please reload and try again</span>
+            </div>
+        </div>
+    </div>
+</div>

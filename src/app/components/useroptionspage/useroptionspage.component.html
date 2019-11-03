@@ -1,37 +1,40 @@
-<!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
-<button type="button" routerLink="/loginpage">Logout</button>
+<div class="main">
+    <div class="container" id="container">
+        <button type="button" class="btn btn-secondary" id="logout" routerLink="/loginpage">Logout</button>
+        <p id="account"><a routerLink="/userupdatepage">My Account</a></p>
+        <div class="page-header" id="pageheader">
+            <div class="header" id="header">
+                <!-- searchinput will go into url on the components-->
+                <h1 id="searchheader">Search:</h1>
+                <input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name" id="search">
+                <button type="button" (click)="search(searchinput)" id="searchbtn"
+                    class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        <!-- User needs to look up songs by song name, artist name, or album(?) and comment on songs -->
 
-<!-- searchinput will go into url on the components-->
-<input type="search" [(ngModel)]="searchinput" placeholder="Type song name or Artist Name">
-<button type="button" (click)="search()">Search</button>
+        <div class="content-container" id="contentcontainer">
+            <div class="content" id="content" *ngFor="let song of songs">
+                <div class="content-header" id="contentheader">
+                    <h2 id="songtitle">{{song.name}}</h2>
+                </div>
+                <audio src="{{song.link}}" class="song-link" controls></audio>
+                <div class="content-body" id="contentbody">
+                    <div (click)="gotosongpage(song)"><h3><a>Song Information</a></h3></div>
+                </div>
+            </div>
+        </div>
 
-<!-- Maybe make a pipe for song that formats the song information and adds a comments option? -->
-<!-- Make artist name a link to artist page to view artists profile and song list? -->
 
-<ul>
-    <li *ngFor="let song of songs">{{song}}</li>
-</ul>
 
-<table>
-    <tr *ngFor="let artist of artists">
-        <td>{{artist.username}}</td>
-    </tr>
-</table>
 
-<table>
-    <tr *ngFor="let artist of artists">
-        <a href={{song.link}}>
-            <td>{{song.name}}</td>
-        </a>
-        <td>{{song.rating}}</td>
-        <td><input type="text" placeholder="Leave a Comment"></td>
-        <td>
-            <div (click)="rateit(1)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(2)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(3)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(4)"><span class="fa fa-star"></span></div>
-            <div (click)="rateit(5)"><span class="fa fa-star"></span></div>
-        </td>
-        <td><button>Submit Comments</button></td>
-    </tr>
-</table>
+
+
+
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/L_jWHffIx5E" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+            style="float:right; height: 100vh; width: 375px; position: absolute; top: 0; right: 0;"
+            [style.display]="isVisible ? 'block' : 'none'"></iframe>
+    </div>
+</div>

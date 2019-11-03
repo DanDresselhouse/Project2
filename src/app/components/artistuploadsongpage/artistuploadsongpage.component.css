@@ -1,0 +1,21 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    background-color: lightgray;
+}
+.container {
+    background-color: white;
+    border-right: 1px solid orange;
+    border-left: 1px solid orange;
+    height: 100%;
+}
+#pagetitle {
+    font-size: 5em;
+}
+.upload-body {
+    margin: auto;
+    width: 25%;
+}
+#verification {
+    margin-top: 8%;
+}

@@ -1,0 +1,83 @@
+.checked {
+    color: rgb(250, 223, 69);
+}
+
+.zoom:hover {
+    transform: scale(1.5);
+}
+
+.main {
+    background-color: lightgray;
+    height: 100vh;
+    width: 100%;
+}
+.container {
+    height: 100%;
+    background-color: white;
+    border-left: 1px solid orange;
+    border-right: 1px solid orange;
+}
+.page-header {
+    display: flex;
+    justify-content: center;
+}
+.header {
+    display: flex;
+    align-content: center;
+    width: 60%;
+}
+#search {
+    height: 30px;
+    width: 65%;
+    align-self: flex-end;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-right: 2%;
+}
+#searchheader {
+    margin-right: 2%;
+    margin-bottom: auto;
+    margin-top: auto;
+    align-self: flex-end;
+}
+.content-container {
+    height: 85%;
+    overflow-y: scroll;
+}
+.content {
+    margin: auto;
+    margin-top: 2%;
+    width: 60%;
+    box-shadow: 1px 1px 5px gray;
+    height: auto;
+}
+.content:last-child {
+    margin-bottom: 2%;
+}
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+#songinfo {
+    list-style-type: none;
+}
+#contentbody {
+    margin-left: 70%;
+    padding-bottom: 1%;
+}
+.song-link {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+#account {
+    float: right;
+    margin-top: 1%;
+    margin-bottom: -3%;
+}
+#logout {
+    float: left;
+    margin-top: 1%;
+    margin-bottom: -3%;
+}
