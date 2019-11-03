@@ -8,11 +8,17 @@ export class RatingsPipe implements PipeTransform {
 
   transform(comments: Array<Comment>): number {
     let average = 0;
-    for(let comment of comments){
-      average+=comment.rating;
+    if (comments.length != 0) {
+      for (let comment of comments) {
+        average += comment.rating;
+      }
+
+      let total = Math.round(average / (comments.length) * 10) / 10;
+      return total;
     }
-    let total = Math.round(average/(comments.length) * 10)/10;
-    return total;
+    else {
+      return average;
+    }
   }
 
 }
