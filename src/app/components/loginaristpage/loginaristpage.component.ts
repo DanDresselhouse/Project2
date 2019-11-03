@@ -33,7 +33,7 @@ export class LoginaristpageComponent implements OnInit {
       //console.log(info);
       this.artistID = 8;
       this.idService.changeMessage(this.artistID);
-      this.router.navigateByUrl("/artistoptionspage");
+      this.router.navigateByUrl("/artistuploadsong");
 
     //backend endpoint goes here
     let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/artist/login";
@@ -42,7 +42,7 @@ export class LoginaristpageComponent implements OnInit {
       console.log(info);
       this.artistID = info.artistID;
       this.idService.changeMessage(this.artistID);
-      this.router.navigateByUrl("/artistoptionspage");
+      this.router.navigateByUrl("/artistuploadsong");
 
     }).catch((response) => { console.log("Information couldn't be found") });
   }
