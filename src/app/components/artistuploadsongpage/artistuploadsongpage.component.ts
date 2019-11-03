@@ -16,6 +16,7 @@ export class ArtistuploadsongpageComponent implements OnInit {
   selectedFiles: FileList;
 
   albumart: FileList;
+  albumartpath: string = "";
 
   submittedform: boolean = false;
   correct: boolean = false;
@@ -39,7 +40,7 @@ export class ArtistuploadsongpageComponent implements OnInit {
       inAlbum: 1,
       rating: 0,
       link: "https://songcollectionbucket.s3.us-east-2.amazonaws.com/" + this.selectedFiles.item(0).name,
-      albumArt: "https://songcollectionbucket.s3.us-east-2.amazonaws.com/" + this.albumart.item(0).name
+      albumArt: this.albumartpath
     }
 
     console.log(this.albumart);
@@ -68,6 +69,7 @@ export class ArtistuploadsongpageComponent implements OnInit {
 
   selectAlbumArt(event) {
     this.albumart = event.target.files;
+    this.albumartpath = "https://songcollectionbucket.s3.us-east-2.amazonaws.com/" + this.albumart.item(0).name;
   }
 
   uploadEverything() {
