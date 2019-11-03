@@ -18,11 +18,11 @@
                 <div class="content-header" id="contentheader">
                     <h2 id="songtitle">{{song.name}}</h2>
                     <h2 id="songrating">Average Rating:
-                        <!-- AVERAGE RATING GOES HERE -->/5</h2>
+                        {{comments | ratings}}/5</h2>
                 </div>
                 <audio src="{{song.link}}" class="song-link" controls></audio>
                 <div class="content-body" id="contentbody">
-                    <h3>Song Information</h3>
+                    <div (click)="gotosongpage(song)"><h3>Song Information</h3></div>
                 </div>
             </div>
         </div>

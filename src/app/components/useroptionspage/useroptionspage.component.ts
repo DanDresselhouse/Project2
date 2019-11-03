@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { transition, trigger, style, animate, state } from '@angular/animations';
 import { BlockingProxy } from 'blocking-proxy';
 import { DataserviceService } from 'src/services/dataservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-useroptionspage',
@@ -46,8 +47,6 @@ import { DataserviceService } from 'src/services/dataservice.service';
   ]
 })
 export class UseroptionspageComponent implements OnInit {
-  userid: number = 0;
-  thisuser: User;
   searchinput: string = "";
   songs: Array<Song>;
   artists: Array<string>=[];
@@ -57,7 +56,9 @@ export class UseroptionspageComponent implements OnInit {
 
   isExpanded: boolean = false;
 
-  constructor(private idTransfer:DataserviceService, private getrequest: GetrequestService, private data: DataService, private postrequest: PostrequestService) { }
+  comments: Array<Comment>;
+
+  constructor(private idTransfer:DataserviceService, private getrequest: GetrequestService, private data: DataService, private postrequest: PostrequestService,private router: Router) { }
 
   ngOnInit() {
 
@@ -67,12 +68,6 @@ export class UseroptionspageComponent implements OnInit {
       this.isVisible = true;
     }
 
-
-    this.data.currentMessage.subscribe(id => this.userid = id)
-
-    
-    this.idTransfer.currentMessage.subscribe(id => this.userid=id);
-    this.getuserbyid(this.userid);
 
 
     this.getallsongs();
@@ -130,17 +125,7 @@ export class UseroptionspageComponent implements OnInit {
   //   }).catch((response) => { console.log("Information couldn't be found") });
   // }
 
-  getuserbyid(id: number) {
-    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/user/" + id;
-    
-    this.getrequest.getmethod(url).then((info) => {
-      
-      this.thisuser = info;
-      console.log(this.thisuser);
-      
-    }).catch((response) => { console.log("Information couldn't be found") });
-    return null;
-  }
+ 
 
 
   search(name: string) {
@@ -156,65 +141,11 @@ export class UseroptionspageComponent implements OnInit {
     }).catch((response) => { console.log("Information couldn't be found") });
   }
 
-  //rating function**********************************************
-
-  currentpossition: Array<number> = [];
-
-
-  ischecked(song: Song, star: number) {
-
-    if (star <= song.rating || (this.currentpossition[0] == song.id && this.currentpossition[1] >= star)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  gotosongpage(song: Song){
+    this.data.changeMessage(song.id);
+    this.router.navigateByUrl("/songpage");
   }
 
 
-  rateit(song: Song, i: number) {
-    song.rating = i;
-  }
-
-  onmouseeneter(songid: number, i: number) {
-
-    this.currentpossition = [songid, i];
-
-  }
-
-  onmouseleave() {
-    this.currentpossition = [];
-  }
-
-  commentid: Array<string> = [];
-
-  submitcomment(thissong: Song) {
-
-    console.log(this.commentid[thissong.id]);
-
-
-
-    let body = {
-      id: 0,
-      comment: this.commentid[thissong.id],
-      rating: thissong.rating,
-      user: this.thisuser.id,
-      song: thissong.id
-    }
-
-    console.log(body);
-
-    //backend endpoint goes here
-    let url = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/comment/song";
-
-    this.postrequest.postmethod(url, body).then(() => {
-
-      console.log("success")
-
-    }).catch((response) => { console.log("something went wrong") });
-
-
-  }
-
-  //**************************** ****************************************/
+  
 }
