@@ -144,6 +144,20 @@ export class UseroptionspageComponent implements OnInit {
       }
 
     }).catch((response) => { console.log("Information couldn't be found") });
+
+    let url2 = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999/song/artist/name/" + name;
+    this.getrequest.getmethod(url2).then((info) => {
+      console.log(info);
+      let artistsongs: Array<Song> = info;
+      this.songs = this.songs.concat(artistsongs);
+
+      for(let i=0; i<this.songs.length; i++){
+        this.getartistbyid(this.songs[i].artistId, i);
+      }
+
+    }).catch((response) => { console.log("Information couldn't be found") });
+
+
   }
 
   gotosongpage(song: Song){
